@@ -1,0 +1,24 @@
+<div class="card">
+    <div class="card-header">
+        exam06_scope_property_method.html
+    </div>
+    <div class="card-body">
+        <div class="form-group">
+            <lable>도시 선택</lable>
+            <select class="form-control"
+                ng-options="city for city in cities"
+                ng-model="city" 
+                style="width:200px" 
+            >
+                <!--ng-model 밑에 두줄-->
+                <!-- 표현식 / 자바스크립트의 일부분이 들어갈수 있다 / ng-options의 이름이 "city for city in cities"-->
+                <!--양방향 바인딩 / select를 뉴욕으로 바꾸면 controller도 바뀜 /  데이터를 어디에 저장할 것인가-->
+                <!--이 객체(city)에 이 속성(여기는아직없음)으로 저장하겟다 / 주로 form에서 많이 사용-->
+            </select>
+        </div>
+        <div>
+            <p>선택한 도시: {{city}}</p>
+            <p>도시의 나라: {{getCountry()}}</p>
+        </div>
+    </div>
+</div>
