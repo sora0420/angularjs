@@ -1,0 +1,54 @@
+<div class="card">
+    <div class="card-header">
+        exam07_scope_implicit_property.html
+        <span class="badge badge-info ml-2">{{(todos | filter: {complete:false}).length}}</span> <!--배열의 길이 / 필터 사용시 | / 필터링한 개수만length-->
+    </div>
+
+    <div class="card-body row">
+        <div class="col-sm-6">
+            <div class="card card-body">
+              <div class="form-group">
+                <label for="actionText">Action:</label>
+                <!-- //$scope.newTodo 이렇게 없어도 자동으로 만들어 냄 / 사용자가 입력한 내용을 action에 저장함-->
+                <input id="actionText" type="text" class="form-control" ng-model="newTodo.action"/> 
+              </div>
+              <div class="form-group">
+                <label for="actionLocation">Location:</label>
+                <select id="actionLocation" ng-model="newTodo.location">
+                    <option value="Home" selected>Home</option> <!--selected 기본적으로 선택됨 / 인데 ng-model="newTodo.location"때문에 기본선택 안됨-->
+                    <option value="Office">Office</option>
+                    
+                </select>
+              </div>
+              <button class="btn btn-primary btn-sm mb-2" ng-click="addNewItem1(newTodo)">추가</button> 
+              <button class="btn btn-primary btn-sm" ng-click="addNewItem2()">추가</button>               
+              <!--onclick 사용 불가 // ng-click을 써야 표현식 사용 가능 // addNewItem컨트롤러에서 만듦-->
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Action</th>
+                  <th>Done</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="item in todos"> <!--todos에서 객체 하나를 뽑아와서 item에 저장 // 값이 있는만큼 repeat-->
+                    <td>{{$index+1}}</td> <!-- 바인딩 기호 {{}} // repeat를 쓰면 index 사용가능-->
+                    <td>{{item.action}}</td> <!-- 바인딩 기호 {{}} // item이 가지고 있는 action값-->
+                    <td>{{item.complete}}</td>                    
+                    <td><input type="checkbox" ng-model="item.complete"/></td> <!--item의 complete값을 양방향으로 -->
+                </tr>
+              </tbody>
+            </table>
+          </div>
+    
+    </div>
+</div>
+
+<!--ng-model 밑에 두줄-->
+    <!--양방향 바인딩 / select를 뉴욕으로 바꾸면 controller도 바뀜 /  데이터를 어디에 저장할 것인가-->
+    <!--이 객체(city)에 이 속성(여기는아직없음)으로 저장하겟다 / 주로 form에서 많이 사용-->
