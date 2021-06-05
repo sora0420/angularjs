@@ -1,0 +1,19 @@
+<div class="card">
+    <div class="card-header">
+      exam09_scope_broadcast.html
+    </div>
+
+    <div class="card-body">      
+        <h6 class="alert alert-success">로그인</h6>
+        <div>ID: <input class="form-control" type="text" ng-model="user.uid"> <br/></div> <!--user.uid 자동적으로 객체가 생성됨--> 
+        <div>PW: <input class="form-control" type="password" ng-model="user.upassword"></div>  <!--user.upassword 자동적으로 객체가 생성됨--> 
+        <button ng-show="!uid" class="btn btn-primary btn-sm mt-3" ng-click="login(user)">로그인</button> <!--여기는 exam09 컨트롤러-->
+        <button ng-show="uid" class="btn btn-primary btn-sm mt-3" ng-click="logout()">로그아웃</button> <!--exam09Controller 함수안에 방송 넣기-->
+      </div>
+
+    </div>
+</div>
+
+<!--ng-model 밑에 두줄-->
+    <!--양방향 바인딩 / select를 뉴욕으로 바꾸면 controller도 바뀜 /  데이터를 어디에 저장할 것인가-->
+    <!--이 객체(city)에 이 속성(여기는아직없음)으로 저장하겟다 / 주로 form에서 많이 사용-->
