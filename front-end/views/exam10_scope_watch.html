@@ -1,0 +1,32 @@
+<div class="card">
+    <div class="card-header">
+      exam10_scope_watch.html
+    </div>
+
+    <div class="card-body">
+      <div class="alert alert-primary">
+        <form>
+          <div  class="form-group">
+            <label>비빌번호 입력</label>
+            <input type="text" class="form-control" ng-model="user.password1"/> <!--스코프안에 user라는 객체를 만들고 password1에 저장해라-->
+          </div> <!--여기서 만들고 컨트롤러에서 쓸때 $scope-->
+  
+          <div  class="form-group">
+            <label>비밀번호 확인</label>
+            <input type="text" class="form-control" ng-model="user.password2"/><!--mg-model안에 있는건 다 표현식 / 속성이거나 함수거나-->
+          </div>
+  
+          <div>
+            <button id="btn" class="btn btn-success {{btnDisabled?'disabled':''}}">버튼</button> <!--앞이 true면 disalbe가 추가됨 / false면 아무것도 추가 x-->
+          </div> <!--삼항연산자-->
+          <div>
+            <!-- <button disabled value="test">버튼</button> 버튼 disabled하면 비활성화가 됨 그래서 위에서 삼항연산자 쓴거-->
+          </div>
+        </form>
+      </div>
+    </div>
+</div>
+
+<!--ng-model 밑에 두줄-->
+    <!--양방향 바인딩 / select를 뉴욕으로 바꾸면 controller도 바뀜 /  데이터를 어디에 저장할 것인가-->
+    <!--이 객체(city)에 이 속성(여기는아직없음)으로 저장하겟다 / 주로 form에서 많이 사용-->
