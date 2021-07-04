@@ -1,0 +1,35 @@
+<div class="card">
+    <div class="card-header">
+      exam19_event_directive    
+    </div>
+    <div class="card-body">
+      <div class="alert alert-primary">
+        <button class="btn btn-info mr-3" ng-click="handleBtnClick($event)">사진 변경</button><!--이벤트객체를 쓸 경우 $event넣어줌-->
+        <img id="img1" height="150" src="resources/img/{{imageName}}"/>
+      </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Action</th>
+            <th>Done</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="item in todos"
+            ng-mouseenter="handleMouseEvent($event)"
+            ng-mouseleave="handleMouseEvent($event)">
+          <!-- <tr ng-repeat="item in todos" ng-class-odd="'custom-class'">
+          <tr ng-repeat="item in todos" ng-class-odd="customClass"> -->
+          <!--" ">>상태속성이라 컨트롤러에서 정의 >> 언제든지 속성 값을 바꿀수잇음 / 위에거엿으면 "'custom-class'" >> 고정값 / -->
+          <td>{{$index + 1}}</td>
+          <td>{{item.action}}</td>
+          <td>{{item.complete}}</td>
+          <!--ng-style은 {}필요 / 속성:값  / ng-style="{'color':'red', 'font-size':'1.5rem'}"
+          customColor>> 상태데이터
+          ng-style쓰는 이유 : 함수 등 다양하게 쓰려고-->
+        </tr>
+        </tbody>
+      </table>  
+    </div>
+</div>
