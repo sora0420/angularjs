@@ -1,0 +1,119 @@
+<div class="card">
+  <div class="card-header">
+      exam22_filter.html
+  </div>
+  <div class="card-body">
+      <div>
+        <div class="alert alert-primary">
+          갯수 제한
+          <select ng-model="limitVal">
+            <option ng-repeat="limit in limitRange">{{limit}}</option>
+          </select>
+        </div>
+        <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>번호</th>
+              <th>이름</th>
+              <th>분류</th>
+              <th>가격</th>
+              <th>유효기간</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="product in products | limitTo:limitVal"> <!--limitTo:limitVal 바뀐 개수만큼 바뀜-->
+              <td>{{product.pno}}</td>
+              <td>{{product.name}}</td>
+              <td>{{product.category}}</td>
+              <td>₩{{product.price | number:0}}</td> <!--number:0 이건 소수점자리 표시/ currency:"₩"-->
+              <td>{{getExpiryDate(product.expiry) | date:"yyyy.MM.dd"}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div>
+        <div class="alert alert-primary">
+          속성 필터링
+        </div>
+        <select ng-model="categoryVal">
+          <option ng-repeat="category in categoryList">{{category}}</option>
+        </select>
+        <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>번호</th>
+              <th>이름</th>
+              <th>분류</th>
+              <th>가격</th>
+              <th>유효기간</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="product in products | filter: {category:getCategoryVal()}"> 
+              <td>{{product.pno}}</td>
+              <td>{{product.name}}</td>
+              <td>{{product.category}}</td>
+              <td>₩{{product.price | number:0}}</td> <!--number:0 이건 소수점자리 표시/ currency:"₩" / currency만쓰면 $-->
+              <td>{{getExpiryDate(product.expiry) | date:"yyyy.MM.dd"}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div>
+        <div class="alert alert-primary">
+          복잡한 조건으로 필터링
+        </div>
+        <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>번호</th>
+              <th>이름</th>
+              <th>분류</th>
+              <th>가격</th>
+              <th>유효기간</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="product in products | filter: checkFiltering"> <!--filter뒤에 함수, 함수이름만 / ()는 안넣음 / 앵귤러에서 자동으로넣음-->
+              <td>{{product.pno}}</td>
+              <td>{{product.name}}</td>
+              <td>{{product.category}}</td>
+              <td>₩{{product.price | number:0}}</td> <!--number:0 이건 소수점자리 표시/ currency:"₩" / currency만쓰면 $-->
+              <td>{{getExpiryDate(product.expiry) | date:"yyyy.MM.dd"}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div>
+        <div class="alert alert-primary">
+          정렬
+        </div>
+        <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>번호</th>
+              <th>이름</th>
+              <th>분류</th>
+              <th>가격</th>
+              <th>유효기간</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!--<tr ng-repeat="product in products | orderBy:'price'"> filter뒤에 함수, 함수이름만 / ()는 안넣음 / 앵귤러에서 자동으로넣음-->            
+            <tr ng-repeat="product in products | orderBy:['category', '-price']"> <!--filter뒤에 함수, 함수이름만 / ()는 안넣음 / 앵귤러에서 자동으로넣음-->
+              <!--카테고리로 먼저 정렬 / 가격 내림차순 정렬 / 잘안씀 >>이미 서버에서 정렬해서가져오므로 딱히-->
+              <td>{{product.pno}}</td>
+              <td>{{product.name}}</td>
+              <td>{{product.category}}</td>
+              <td>₩{{product.price | number:0}}</td> <!--number:0 이건 소수점자리 표시/ currency:"₩" / currency만쓰면 $-->
+              <td>{{getExpiryDate(product.expiry) | date:"yyyy.MM.dd"}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+  </div>
+</div>
