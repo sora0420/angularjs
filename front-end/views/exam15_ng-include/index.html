@@ -1,0 +1,17 @@
+<div class="card">
+    <div class="card-header">
+        exam15_ng-include
+    </div>
+    <div class="card-body">
+        <div class="alert alert-primary">
+          <input type="checkbox" ng-model="showList"/> Use the list view
+          <button class="btn btn-secondary btn-sm" ng-click="changeView()">화면 변경</button>
+        </div>
+        <ng-include src="'views/exam15_ng-include/' + viewFile()"
+                    onload="handleLoad()"></ng-include>
+        <!--//include>>ajax효과 /  ajax통신을 해서 html조각을 받아서 넣어줌 // viewFile >>함수 리턴값이랑 결합하겟다-->
+        <!--외부에 있는 내용을 이쪽에 삽입하겟다 / ng안에는 반드시 코드가 들어와야함 ""이 안에 ''주의
+                    onload >>dom 객체를 만들었을때 callback되는 함수를 넣겟다 / 
+                    (로드가 끝나면)인클루드가 끝나고 자동적으로 뭔가 실행하고 싶을때 사용-->
+    </div>
+</div>
