@@ -1,0 +1,37 @@
+<div class="card">
+  <div class="card-header">
+    update.html  
+  </div>
+  <div class="card-body">
+    <div>
+      <div class="form-group">
+          <label>제품이름:</label>
+          <input class="form-control" ng-value="product.name" readonly/><!--단방향 ng-value-->
+      </div>
+      <div class="form-group">
+          <label>제품번호:</label>
+          <textarea class="form-control" ng-value="product.pid" readonly></textarea>
+      </div>
+      <div class="form-group">
+        <label>글쓴이:</label>
+        <input class="form-control" value="{{uid}}" readonly/>
+    </div>
+      <div class="form-group">
+        <label>제품설명:</label>
+        <textarea class="form-control" ng-value="product.description" readonly></textarea>
+      </div>
+      <div class="form-group">
+        <label>제품카테고리:</label>
+        <textarea class="form-control" ng-value="product.category" readonly></textarea>
+      </div>
+      <div class="form-group">
+        <label>제품가격:</label>
+        <textarea class="form-control" ng-value="product.price" readonly></textarea>
+      </div>
+
+        <button class="btn btn-primary btn-sm" ng-click="getList(pager.pageNo)">목록</button>      
+        <button ng-show="uid" class="btn btn-primary btn-sm" ng-click="updateProductForm()">수정</button> 
+        <button ng-show="uid" class="btn btn-primary btn-sm" ng-click="deleteProduct(product.pid)">삭제</button>       
+  </div>  
+  </div>
+</div>
